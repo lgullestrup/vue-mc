@@ -104,7 +104,7 @@ describe('Model', () => {
             let m = new Model({}, null, {
                 methods: {
                     patch: 'TEST',
-                }
+                },
             });
 
             expect(m.getOption('methods.patch')).to.equal('TEST');
@@ -118,13 +118,13 @@ describe('Model', () => {
                         methods: {
                             update: 'INSTANCE',
                             patch:  'INSTANCE',
-                        }
+                        },
                     }
                 }
             }({}, null, {
                 methods: {
                     patch: 'CONSTRUCTOR',
-                }
+                },
             });
 
             expect(m.getOption('methods.patch')).to.equal('CONSTRUCTOR');
@@ -447,8 +447,8 @@ describe('Model', () => {
             expect(m.errors).to.be.empty;
             expect(validated).to.equal(true);
             expect(n.errors).to.deep.equal({a: [
-                'Must be a valid email address'
-           ]});
+                'Must be a valid email address',
+            ]});
         })
 
         it('should fail if a nested model fails its validation', () => {
@@ -668,7 +668,7 @@ describe('Model', () => {
             expect(task.validate()).to.equal(false);
             expect(task.errors).to.deep.equal({
                 "name": [
-                    "Required"
+                    "Required",
                 ],
             });
 
@@ -695,7 +695,7 @@ describe('Model', () => {
             expect(m.validate()).to.equal(false);
             expect(m.errors).to.deep.equal({
                 "name": [
-                    "Can name be a string, please?"
+                    "Can name be a string, please?",
                 ],
             });
         })
@@ -1257,7 +1257,7 @@ describe('Model', () => {
             let M = class extends Model {
                 routes() {
                     return {
-                        'fetch': 'http://domain.com/:path'
+                        'fetch': 'http://domain.com/:path',
                     }
                 }
                 getRouteResolver() {
@@ -1487,7 +1487,7 @@ describe('Model', () => {
 
                     request.respondWith({
                         status: 200,
-                        response: {id: 1, name: 'Fred'}
+                        response: {id: 1, name: 'Fred'},
                     })
                 })
             })
@@ -1509,7 +1509,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 200
+                        status: 200,
                     })
                 })
             })
@@ -1545,7 +1545,7 @@ describe('Model', () => {
                         status: 200,
                         response: {
                             name: 'Fred',
-                        }
+                        },
                     })
                 })
             })
@@ -1571,7 +1571,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 500
+                        status: 500,
                     })
                 })
             })
@@ -1701,7 +1701,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 500
+                        status: 500,
                     })
                 })
             })
@@ -1722,8 +1722,8 @@ describe('Model', () => {
                     moxios.requests.mostRecent().respondWith({
                         status: 200,
                         response: {
-                            a: 1
-                        }
+                            a: 1,
+                        },
                     })
                 })
             })
@@ -1763,7 +1763,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 500
+                        status: 500,
                     })
                 })
             })
@@ -1796,7 +1796,7 @@ describe('Model', () => {
                         status: 200,
                         response: {
 
-                        }
+                        },
                     })
                 })
             })
@@ -1829,7 +1829,7 @@ describe('Model', () => {
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
                         status: 200,
-                        response: "5"
+                        response: "5",
                     })
                 })
             })
@@ -1855,7 +1855,7 @@ describe('Model', () => {
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
                         status: 200,
-                        response: 'Test'
+                        response: 'Test',
                     })
                 })
             })
@@ -1879,7 +1879,7 @@ describe('Model', () => {
                         status: 200,
                         response: {
                             a: 1,
-                        }
+                        },
                     })
                 })
             })
@@ -1903,7 +1903,7 @@ describe('Model', () => {
                         status: 200,
                         response: {
                             a: 5,
-                        }
+                        },
                     })
                 })
             })
@@ -1927,7 +1927,7 @@ describe('Model', () => {
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
                         status: 200,
-                        response: "5"
+                        response: "5",
                     })
                 })
             })
@@ -2107,7 +2107,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 500
+                        status: 500,
                     });
                 })
             })
@@ -2128,7 +2128,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 200
+                        status: 200,
                     });
                 })
             })
@@ -2152,7 +2152,7 @@ describe('Model', () => {
                         status: 422,
                         response: {
                             errors: [],
-                        }
+                        },
                     });
                 })
             })
@@ -2173,7 +2173,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 200
+                        status: 200,
                     });
                 })
             })
@@ -2197,7 +2197,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 500
+                        status: 500,
                     });
                 })
             })
@@ -2218,7 +2218,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 200
+                        status: 200,
                     });
                 })
             })
@@ -2237,7 +2237,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 200
+                        status: 200,
                     });
                 })
             })
@@ -2260,7 +2260,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 500
+                        status: 500,
                     });
                 })
             })
@@ -2288,8 +2288,8 @@ describe('Model', () => {
                     moxios.requests.mostRecent().respondWith({
                         status: 201,
                         response: {
-                            id: 1
-                        }
+                            id: 1,
+                        },
                     });
                 })
             })
@@ -2394,7 +2394,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 200
+                        status: 200,
                     });
                 })
             })
@@ -2437,7 +2437,7 @@ describe('Model', () => {
                         status: 422,
                         response: {
                             id: 'No good, sorry',
-                        }
+                        },
                     });
                 })
             })
@@ -2461,7 +2461,7 @@ describe('Model', () => {
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
                         status: 422,
-                        response: 5
+                        response: 5,
                     });
                 })
             })
@@ -2551,7 +2551,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 200
+                        status: 200,
                     })
                 })
             })
@@ -2586,7 +2586,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 200
+                        status: 200,
                     })
                 })
             })
@@ -2610,7 +2610,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 500
+                        status: 500,
                     })
                 })
             })
@@ -2735,7 +2735,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 500
+                        status: 500,
                     })
                 })
             })
@@ -2755,7 +2755,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 200
+                        status: 200,
                     })
                 })
             })
@@ -2777,7 +2777,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 200
+                        status: 200,
                     })
                 })
             })
@@ -2799,7 +2799,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 200
+                        status: 200,
                     })
                 })
             })
@@ -2821,7 +2821,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 500
+                        status: 500,
                     })
                 })
             })
@@ -2850,7 +2850,7 @@ describe('Model', () => {
 
                 moxios.wait(() => {
                     moxios.requests.mostRecent().respondWith({
-                        status: 200
+                        status: 200,
                     });
                 })
             })

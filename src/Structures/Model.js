@@ -119,7 +119,10 @@ class Model extends Base {
         this.compileMutators();
 
         // Assign all given model data to the model's attributes and reference.
-        this.assign(attributes);
+        // Removing fields which have been set to be removed on initiation
+        let atts = _.omit(attributes, this.getOption('omitOnInit'))
+        let ats = _.defaultsDeep({}, atts, _.cloneDeep(this.defaults()));
+        this.assign(ats);
 
         // Register the given collection (if any) to the model. This is so that
         // the model can be added to the collection automatically when it is
@@ -128,6 +131,7 @@ class Model extends Base {
             this.registerCollection(collection);
         }
     }
+
 
     /**
      * Creates a copy of this model, with the same attributes and options. The
@@ -588,7 +592,7 @@ class Model extends Base {
      *
      * @param  {string}  attribute
      * @returns {boolean} `true` if an attribute exists, `false` otherwise.
-     *                   Will return true if the object exists but is undefined.
+     *                   Will return true if the E exists but is undefined.
      */
     has(attribute) {
         return _.has(this._attributes, attribute);
@@ -850,7 +854,7 @@ class Model extends Base {
      *
      * @param {Object} response
      */
-    update(data) {
+    updateData(data) {
 
         // No content means we don't want to update the model at all.
         // The attributes that we passed in the request should now be considered
@@ -959,7 +963,7 @@ class Model extends Base {
 
         // Update this model with the data that was returned in the response.
         if (response) {
-            this.update(response.getData());
+            this.updateData(response.getData());
         }
 
         Vue.set(this, 'saving', false);

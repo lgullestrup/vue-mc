@@ -16,17 +16,20 @@ export default class Request {
     send() {
         return new Promise((resolve, reject) => {
             axios.request(this.config)
-                .then((response) => {
-                    return resolve(new this.Response(response));
-                })
-                .catch((error) => {
-                    return reject(
-                        new this.RequestError(
-                            error,
-                            new this.Response(error.response)
-                        ))
-                    ;
-                })
+                .then(response => this.handleResponse(response, resolve))
+                .catch(error => this.handleError(error, reject));
         });
+    }
+
+    handleResponse(response, resolve){
+        return resolve(new this.Response(response));
+    }
+
+    handleError(error, reject){
+        return reject(
+            new this.RequestError(
+                error,
+                new this.Response(error.response)
+            ));
     }
 }
